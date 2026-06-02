@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dark background rounded square -->
+  <rect width="32" height="32" rx="6" fill="#1C1A17"/>
+
+  <!-- 3 pallet planks -->
+  <rect x="4" y="7"  width="24" height="4"   rx="1"   fill="#C4A882"/>
+  <rect x="4" y="13" width="24" height="4"   rx="1"   fill="#A8896A"/>
+  <rect x="4" y="19" width="24" height="4"   rx="1"   fill="#C4A882"/>
+
+  <!-- Amber left-edge accent -->
+  <rect x="4" y="7"  width="2"  height="16"  rx="0.5" fill="#D4880A"/>
+
+  <!-- 3 legs -->
+  <rect x="6"  y="23" width="5" height="4"   rx="1"   fill="#8B6F4E"/>
+  <rect x="13" y="23" width="5" height="4"   rx="1"   fill="#8B6F4E"/>
+  <rect x="21" y="23" width="5" height="4"   rx="1"   fill="#8B6F4E"/>
+
+  <!-- Bottom board -->
+  <rect x="4" y="27" width="24" height="3"   rx="1"   fill="#A8896A" opacity="0.85"/>
+</svg>

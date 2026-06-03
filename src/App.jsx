@@ -1,9 +1,9 @@
-import PalletPlatform from '../src/PalletPlatform'
+import Desipallet from './Desipallet'
 
 function App() {
   return (
     <div>
-      <PalletPlatform />
+      <Desipallet />
     </div>
   )
 }

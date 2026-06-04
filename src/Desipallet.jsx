@@ -919,7 +919,7 @@ export default function Desipallet() {
               </div>
               <div className="pp-cg"><label>Quantity</label><input type="number" placeholder="e.g. 500" value={formData.qty} onChange={e => setFormData(f => ({ ...f, qty: e.target.value }))} /></div>
             </div>
-            <div className="pp-cg"><label>Additional </label>
+            <div className="pp-cg"><label>Additional Requirements</label>
               <textarea placeholder="Size, wood type, delivery location, ISPM-15 needed, export destination..." value={formData.message} onChange={e => setFormData(f => ({ ...f, message: e.target.value }))} />
             </div>
             <button className={`pp-csub${formSending ? " pp-form-sending" : ""}`} onClick={sendQuote}>

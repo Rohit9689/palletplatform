@@ -1,18 +1,39 @@
-# React + Vite
+# Lazy Loading — What Changed
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Files Modified
+| File | Change |
+|------|--------|
+| `App.jsx` | Uses `React.lazy` + `Suspense` to lazy-load Desipallet |
+| `Desipallet.jsx` | Internal preloader timeout removed (Suspense handles it now) |
+| `PreLoader.jsx` | **NEW** — Shown by Suspense while the JS bundle downloads |
 
-Currently, two official plugins are available:
+## How It Works
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Before (problem)
+Browser loads → shows raw HTML shell → waits for huge JS bundle → React paints UI
+User sees: blank/unstyled page flash ❌
 
-## React Compiler
+### After (fixed)
+Browser loads → `main.jsx` + tiny `App.jsx` paint instantly → Suspense shows
+`<PreLoader />` with pallet animation → Desipallet bundle downloads in background
+→ Suspense swaps PreLoader for the full site seamlessly ✅
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## How to Use
+Replace your existing `src/` files with these. No other config needed — Vite
+automatically code-splits `React.lazy()` imports into separate chunks.
 
-Note: This will impact Vite dev & build performances.
+## Bonus: Vercel Performance Tips
+Add this to your `vercel.json` to enable compression and caching:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```json
+{
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}
+```
